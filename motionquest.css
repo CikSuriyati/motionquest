@@ -1,0 +1,107 @@
+/* MOTION QUEST — styles for graphs, the road and the level player.
+   base.css and interface.css are Graph Quest's, copied unchanged. */
+
+/* ---------- graphs ---------- */
+.plot { display: block; width: 100%; height: auto; overflow: visible; font-family: "DM Sans", sans-serif; }
+.plot .tick { font-size: 13px; fill: var(--ink-soft); font-weight: 600; }
+.plot .tick.sm { font-size: 10.5px; }
+.plot .tick.var { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 17px; font-weight: 700; fill: var(--ink); }
+.plot .axis { font-size: 13.5px; font-weight: 700; fill: var(--ink); }
+.plot .axis.sm { font-size: 11px; fill: var(--ink-soft); }
+.plot .seg { stroke: var(--ink); stroke-linecap: round; }
+.plot .seg.hi { stroke: var(--orange); }
+.plot .seg.bad { stroke: #c9453a; stroke-dasharray: 10 8; }
+.plot .seg-hit { stroke: transparent; stroke-width: 30; stroke-linecap: round; cursor: pointer; outline: none; }
+.plot .seg-hit:hover, .plot .seg-hit:focus-visible { stroke: rgba(238, 108, 52, .22); }
+.plot .letter circle { fill: #fff; stroke: var(--ink); stroke-width: 2; }
+.plot .letter text { font: 700 14px "DM Sans", sans-serif; fill: var(--ink); pointer-events: none; }
+.plot .letter { cursor: pointer; }
+.plot .letter.hi circle { fill: var(--orange); }
+.plot .piece { fill: rgba(255, 213, 74, 0); stroke: none; cursor: pointer; outline: none; }
+.plot .piece:hover, .plot .piece:focus-visible { fill: rgba(255, 213, 74, .35); }
+.plot .piece.on { fill: rgba(255, 213, 74, .78); }
+.plot.mini .seg { stroke-width: 4; }
+.board .plot { max-height: 380px; }
+
+/* ---------- picking a graph ---------- */
+.opt-graphs { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 14px 0 6px; }
+.opt-graph { position: relative; background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 12px 10px 6px; cursor: pointer; transition: border-color .15s, transform .15s, box-shadow .15s; font: inherit; }
+.opt-graph:hover:not([disabled]) { border-color: var(--ink); transform: translateY(-2px); box-shadow: var(--shadow); }
+.opt-graph.chosen { border-color: var(--orange); box-shadow: 0 0 0 3px var(--orange-soft); }
+.opt-graph.right { border-color: #5a9b3c; background: var(--green-soft); }
+.opt-graph.wrong { border-color: #c9453a; background: #fbecea; opacity: .75; }
+.opt-graph[disabled] { cursor: default; }
+.og-k { position: absolute; top: 8px; right: 10px; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: #fff; font-weight: 700; font-size: 13px; display: grid; place-items: center; }
+
+/* ---------- the road ---------- */
+.drive { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 10px 12px 12px; margin: 12px 0; }
+.track { display: block; width: 100%; height: auto; }
+.track .tick { font-size: 11px; fill: var(--ink-soft); font-weight: 600; font-family: "DM Sans", sans-serif; }
+.track .axis { font-size: 12px; font-weight: 700; fill: var(--ink); font-family: "DM Sans", sans-serif; }
+.drive-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+.readout { display: flex; gap: 14px; flex-wrap: wrap; font-size: 14px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.readout b { color: var(--ink); }
+
+/* ---------- the level ---------- */
+.task-dots { display: flex; gap: 6px; align-items: center; }
+.tdot { width: 28px; height: 8px; border-radius: 6px; background: var(--line); }
+.tdot.now { background: var(--yellow); }
+.tdot.done { background: var(--green); }
+.task-q { display: flex; gap: 12px; align-items: flex-start; }
+.task-q p { margin: 2px 0 0; font-size: 16.5px; color: var(--ink); font-weight: 500; }
+.task-q .qn { flex: none; }
+.answer-row { margin-top: 12px; gap: 10px; align-items: center; }
+.answer-row .unit { font-weight: 700; }
+.answer-row .grow { flex: 1; }
+.tnum { width: 130px; }
+.tap-help, .draw-help { margin: 8px 0 0; }
+.hint-note { background: var(--yellow-soft); margin-top: 12px; }
+.work-note { background: var(--blue-soft); margin-top: 12px; }
+.work-note p { margin: 6px 0 0; color: var(--ink); }
+.say { min-height: 0; }
+.say:empty { display: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- table ---------- */
+.table-wrap { overflow-x: auto; margin: 10px 0; }
+.dtable { border-collapse: collapse; background: #fff; font-variant-numeric: tabular-nums; min-width: 100%; }
+.dtable th, .dtable td { border: 1.5px solid var(--ink); padding: 7px 10px; text-align: center; font-size: 14.5px; }
+.dtable th { background: var(--yellow-soft); text-align: left; white-space: nowrap; }
+
+/* ---------- drawing board ---------- */
+.draw-board, .editor { touch-action: none; }
+.editor .col { stroke: var(--blue); stroke-width: 1.5; stroke-dasharray: 3 5; opacity: .55; }
+.editor .handle { cursor: ns-resize; outline: none; }
+.editor .handle .hit { fill: transparent; }
+.editor .handle .dot { fill: #fff; stroke: var(--orange); stroke-width: 4; transition: r .12s; }
+.editor .handle:hover .dot, .editor .handle:focus-visible .dot { r: 14; fill: var(--orange-soft); }
+@media (max-width: 560px) { .editor .handle .dot { r: 15; } .editor .handle .hv { font-size: 18px; } }
+.editor .handle.fixed { cursor: default; }
+.editor .handle.fixed .dot { stroke: var(--ink); fill: var(--ink); }
+.editor .handle.bad .dot { stroke: #c9453a; fill: #fbecea; }
+.editor .handle .hv { font: 700 12px "DM Sans", sans-serif; fill: var(--ink-soft); pointer-events: none; }
+.editor.locked .handle { pointer-events: none; }
+
+/* ---------- the race ---------- */
+.race-box { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 10px 12px; margin: 12px 0; }
+.race-legend { display: flex; gap: 16px; font-size: 13px; font-weight: 600; margin-top: 2px; flex-wrap: wrap; }
+.race-legend .me { color: var(--orange); }
+.race-legend .riv { color: #4f76c9; }
+.race-result { font-weight: 700; color: var(--ink); }
+
+@media (max-width: 560px) {
+  .opt-graphs { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .opt-graph { padding: 8px 4px 2px; border-radius: 12px; }
+  .og-k { width: 22px; height: 22px; font-size: 12px; top: 5px; right: 6px; }
+  .task-q p { font-size: 15.5px; }
+  .tdot { width: 18px; }
+  .tnum { width: 110px; }
+  .readout { font-size: 13px; gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .opt-graph { transition: none; }
+}
+
+/* test diagrams: motion graphs need more room than Graph Quest's */
+.tdiag svg.plot { max-width: 620px; padding: 6px 4px; }
+.opt-graphs .opt-graph svg.plot { max-width: none; }

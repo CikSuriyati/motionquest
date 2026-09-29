@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOTION QUEST — Graf Gerakan</title>
+  <meta name="description"
+    content="A graphs of motion game for SPM Form 4 Mathematics: watch the car, read and draw distance–time and speed–time graphs, and find distance from the area. Bahasa Melayu and English.">
+  <meta name="theme-color" content="#faf7f7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Caveat:wght@600;700&family=DM+Sans:opsz,wght@9..40,400..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="interface.css">
+  <link rel="stylesheet" href="motionquest.css">
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <a class="brand" href="./">MOTION <i>QUEST</i></a>
+      <div class="toplinks">
+        <button class="tlink hidden" id="nav-map"></button>
+        <button class="tlink hidden" id="nav-progress"></button>
+        <button class="tlink" id="nav-help"></button>
+        <button class="tlink" id="btn-sound"></button>
+        <button class="tlink" id="btn-lang">EN</button>
+      </div>
+    </div>
+
+    <!-- ============ ENTRY ============ -->
+    <section id="screen-entry" class="card hidden" style="position:relative;overflow:hidden;">
+      <div class="entry-copy">
+        <div class="kicker" id="entry-kicker"></div>
+        <h1 id="entry-title"></h1>
+        <p id="entry-lede" style="font-size:17px;"></p>
+        <div class="chips">
+          <span class="chip" id="chip-1"></span><span class="chip" id="chip-2"></span><span class="chip" id="chip-3"></span>
+        </div>
+        <ol class="entry-guide" id="entry-guide"></ol>
+      </div>
+      <div class="quest-art" aria-hidden="true">
+        <span class="art-label">MOTION QUEST / 01</span>
+        <svg viewBox="0 0 400 270" fill="none">
+          <path d="M40 40V220H370" stroke="#17130c" stroke-width="5" stroke-linecap="round"/>
+          <path d="M40 220L130 130L190 130L300 60" stroke="#ee6c34" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M40 220L300 220" stroke="#8d867e" stroke-width="3" stroke-dasharray="7 8"/>
+          <g stroke="#17130c" stroke-width="4">
+            <circle cx="130" cy="130" r="11" fill="#a2dd70"/><circle cx="190" cy="130" r="11" fill="#ffd54a"/><circle cx="300" cy="60" r="14" fill="#f8fafc"/>
+          </g>
+          <path d="M293 60l5 5 9-11" stroke="#17130c" stroke-width="3.5" stroke-linecap="round"/>
+          <g transform="translate(250 246)">
+            <path d="M-24 -9 L-19 -20 L2 -20 L10 -11 L22 -9 Q26 -8 26 -3 L26 1 L-26 1 L-26 -4 Q-26 -9 -24 -9 Z" fill="#ee6c34" stroke="#17130c" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M-15 -17 L-2 -17 L-2 -11 L-17 -11 Z M1 -17 L6 -11 L1 -11 Z" fill="#fff" stroke="#17130c" stroke-width="1.6"/>
+            <circle cx="-14" cy="2" r="6" fill="#17130c"/><circle cx="14" cy="2" r="6" fill="#17130c"/>
+            <path d="M-40 -10h-14M-38 -2h-20" stroke="#8d867e" stroke-width="3" stroke-linecap="round"/>
+          </g>
+        </svg>
+        <div class="art-caption" id="art-caption"></div>
+      </div>
+      <div class="entry-join">
+        <h2 id="join-title"></h2>
+        <div class="fields">
+          <div>
+            <label class="fld" for="in-class" id="lbl-class"></label>
+            <input type="text" id="in-class" placeholder="4S1-2026" autocomplete="off" spellcheck="false" maxlength="20">
+          </div>
+          <div>
+            <label class="fld" for="in-reg" id="lbl-reg"></label>
+            <input type="text" id="in-reg" inputmode="numeric" placeholder="17" autocomplete="off" maxlength="3">
+          </div>
+        </div>
+        <p class="muted" id="entry-privacy" style="margin-bottom:22px;"></p>
+        <p id="entry-error" class="entry-error" role="alert"></p>
+        <button class="btn" id="btn-enter"></button>
+        <button class="btn ghost sm" id="btn-entry-help" style="margin-left:10px;"></button>
+      </div>
+    </section>
+
+    <!-- ============ MAP ============ -->
+    <section id="screen-map" class="hidden">
+      <div class="kicker" id="map-kicker"></div>
+      <h1 id="map-title"></h1>
+      <div class="player" id="player"></div>
+      <div id="test-banner"></div>
+      <div id="next-mission" class="next-mission"></div>
+      <div class="map-section"><h2 id="worlds-title"></h2><span id="worlds-caption"></span></div>
+      <p id="map-guide" class="map-guide"></p>
+      <div id="map-reward" role="status" aria-live="polite"></div>
+      <div class="worlds" id="worlds"></div>
+      <div class="row" style="margin-top:24px;">
+        <button class="btn ghost sm" id="btn-progress"></button>
+        <button class="btn ghost sm" id="btn-switch"></button>
+      </div>
+    </section>
+
+    <!-- ============ HOW TO PLAY ============ -->
+    <section id="screen-guide" class="hidden"></section>
+
+    <!-- ============ LEVEL (game.js) ============ -->
+    <section id="screen-level" class="hidden"></section>
+
+    <!-- ============ DISCOVER ============ -->
+    <section id="screen-discover" class="card hidden"></section>
+
+    <!-- ============ PRE / POST TEST (tests.js) ============ -->
+    <section id="screen-test" class="hidden"></section>
+
+    <!-- ============ PROGRESS ============ -->
+    <section id="screen-progress" class="hidden"></section>
+
+    <footer style="text-align:center;font-size:12px;color:var(--ink-faint);margin-top:48px;">
+      <div>KSSM Matematik Tingkatan 4 · Bab 7 Graf Gerakan</div>
+    </footer>
+  </div>
+
+  <script src="sound.js"></script>
+  <script src="motion.js"></script>
+  <script src="stages.js"></script>
+  <script src="tests.js"></script>
+  <script src="game.js"></script>
+</body>
+
+</html>

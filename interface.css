@@ -1,0 +1,298 @@
+/* UX layout and motion. Fonts and palette inherit the original game theme. */
+:root { --maxw:1100px; }
+.wrap { padding-top:26px; }
+.topbar { margin-bottom:30px; padding-bottom:20px; border-bottom:1px solid var(--line); }
+.tlink { min-height:42px; }
+.btn { border-color:var(--ink); box-shadow:0 3px 0 var(--ink); }
+:where(button,a,input):focus-visible { outline:3px solid #316cc1; outline-offset:4px; }
+#screen-entry { padding:0; display:grid; grid-template-columns:1.15fr 1fr; border-radius:26px; }
+.entry-copy { padding:42px 38px; }
+.entry-copy h1 { font-size:clamp(36px,4.5vw,55px); line-height:1.09; letter-spacing:-.02em; margin:22px 0; }
+.entry-copy .kicker { font-size:10px; color:var(--ink-soft); }
+#entry-lede { font-size:16px!important; }
+.chips { gap:7px; margin-top:26px; }
+.quest-art { background:var(--yellow-soft); color:var(--ink); position:relative; display:flex; flex-direction:column; justify-content:center; padding:35px 24px; background-image:radial-gradient(var(--line) 1px,transparent 1px); background-size:20px 20px; }
+.art-label { font-size:10px; letter-spacing:3px; color:var(--ink-soft); position:absolute; top:30px; left:30px; }
+.quest-art svg { width:100%; overflow:visible; }
+.art-caption { text-align:center; font-family:'Caveat',cursive; font-weight:700; font-size:21px; margin:10px 10px 0; color:var(--orange); }
+.entry-join { grid-column:1/-1; padding:28px 38px 32px; border-top:1px solid var(--line); background:var(--card); }
+.entry-join h2 { font-size:22px; }
+.fields { margin:18px 0 10px; }
+.entry-join .btn { min-width:215px; }
+.entry-error { color:#a43320; font-size:14px; margin:0 0 12px; }
+.entry-error:empty { display:none; }
+#map-title { font-size:40px; }
+.player { gap:12px; margin:22px 0; }
+.kpi { padding:16px 20px; }
+.kpi span { font-size:12px; }
+.next-mission { background:var(--orange-soft); color:var(--ink); border:2px solid var(--ink); box-shadow:0 4px 0 var(--ink); border-radius:20px; padding:28px; display:grid; grid-template-columns:1fr auto; gap:18px 28px; align-items:center; }
+.next-mission .kicker { color:var(--orange); font-size:10px; }
+.next-mission h2 { margin:0 0 7px; font-size:27px; }
+.next-mission p { color:var(--ink-soft); margin:0; font-size:14px; }
+.quest-progress { grid-column:1/-1; border-top:1px solid var(--line); padding-top:16px; }
+.quest-progress span { display:flex; justify-content:space-between; font-size:12px; color:var(--ink-soft); }
+.quest-progress progress { appearance:none; border:0; display:block; width:100%; height:7px; margin-top:10px; border-radius:20px; overflow:hidden; background:var(--line); }
+.quest-progress progress::-webkit-progress-bar { background:var(--line); }
+.quest-progress progress::-webkit-progress-value { background:var(--orange); border-radius:20px; }
+.quest-progress progress::-moz-progress-bar { background:var(--orange); }
+.map-section { display:flex; align-items:center; justify-content:space-between; margin:32px 0 16px; gap:15px; }
+.map-section h2 { font-size:22px; margin:0; }
+.map-section span { font-size:12px; color:var(--ink-soft); }
+.worlds { grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.world { border:2px solid var(--ink); border-radius:16px; padding:20px; box-shadow:0 4px 0 var(--ink); display:flex; flex-direction:column; }
+.world.open { background:#fff; }
+.world .n { width:40px; height:40px; border:2px solid var(--ink); transform:rotate(-3deg); margin-bottom:18px; font-size:18px; }
+.world h3 { font-size:19px; line-height:1.2; }
+.world .topic { font-size:12px; min-height:38px; margin-top:6px; }
+.world .steps { margin-top:auto; }
+.world .corner { font-size:10px; top:22px; right:16px; border:0; }
+.world.locked { background:#fcfaf9; border-color:#d8d2ce; box-shadow:none; }
+.world.locked .corner { position:static; white-space:normal; padding:8px 0; background:none; color:var(--ink-soft); }
+.world.locked h3,.world.locked .topic { color:var(--ink-soft); }
+.step { min-height:45px; }
+.lvl-head { border-bottom:1px solid var(--line); }
+#screen-level,#screen-case,#screen-play,#screen-test,#screen-discover { max-width:860px; margin:0 auto; }
+.mission h2 { font-size:28px; }
+.controls { gap:10px; }
+@media(max-width:850px) { .worlds { grid-template-columns:repeat(2,minmax(0,1fr)); } .entry-copy { padding:30px 24px; } .entry-copy h1 { font-size:39px; } }
+@media(max-width:600px) {
+ .wrap { padding:16px 16px 50px; } .topbar { margin-bottom:20px; gap:6px; } .brand { font-size:16px; } .tlink { padding:6px 9px; font-size:10px; }
+ #screen-entry { grid-template-columns:1fr; } .entry-copy { padding:28px 24px; } .entry-copy h1 { font-size:40px; } .quest-art { padding:22px; min-height:175px; } .quest-art svg { height:150px; } .art-label { top:14px; left:20px; font-size:8px; } .art-caption { font-size:17px; } .entry-join { padding:26px 24px; } .entry-join .btn { width:100%; } .fields { grid-template-columns:1fr 1fr; gap:10px; }
+ .worlds { grid-template-columns:1fr; } .next-mission { grid-template-columns:1fr; padding:22px; } .next-mission .btn { width:100%; } .player { gap:8px; } .kpi { padding:12px; min-width:90px; } .kpi b { font-size:18px; } .map-section span { display:none; } #map-title { font-size:34px; }
+}
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
+@media(max-width:600px) {
+ .entry-join { order:1; }
+ .quest-art { order:2; }
+ .entry-copy { padding-bottom:24px; }
+}
+/* Adventure trail: source order always follows worlds 1–6, then the boss. */
+#worlds { display:block; }
+.map-guide { font-size:14px; margin:-6px 0 25px; }
+.core-trail { position:relative; padding:8px 0 25px; }
+.core-trail::before { content:''; position:absolute; left:50%; top:70px; bottom:0; border-left:4px dashed #d8c7b9; transform:translateX(-2px); }
+.trail-stop { position:relative; width:50%; padding-right:42px; margin-top:-85px; }
+.trail-stop:first-child { margin-top:0; }
+.trail-stop:nth-child(even) { margin-left:50%; padding:0 0 0 42px; }
+.trail-stop::before { content:''; position:absolute; right:0; top:75px; width:42px; border-top:4px dashed #d8c7b9; }
+.trail-stop:nth-child(even)::before { left:0; right:auto; }
+.trail-marker { position:absolute; right:-17px; top:58px; width:34px; height:34px; display:grid; place-items:center; border:3px solid var(--ink); background:var(--bg); border-radius:50%; font-size:12px; font-weight:800; color:var(--ink-soft); z-index:1; }
+.trail-stop:nth-child(even) .trail-marker { left:-17px; right:auto; }
+.landmark { height:150px; margin:-20px -20px 18px; border-radius:11px 11px 45% 12%; overflow:hidden; background:var(--green-soft); }
+.landmark svg { display:block; height:100%; width:100%; }
+.landmark-2 { background:var(--yellow-soft); }.landmark-3 { background:var(--orange-soft); }.landmark-4 { background:var(--green-soft); }.landmark-5 { background:var(--terra-soft); }.landmark-6 { background:var(--blue-soft); }.landmark-7 { background:var(--yellow-soft); }
+#worlds .world { position:relative; }
+#worlds .world .n { position:absolute; top:14px; left:14px; border:2px solid var(--ink); box-shadow:0 2px 0 var(--ink); }
+#worlds .world .corner { top:20px; background:#fff; color:var(--ink); padding:4px 10px; border:1.5px solid var(--ink); }
+#worlds .world.locked .corner { position:static; background:transparent; padding:8px 0 0; box-shadow:none; }
+#worlds .world.locked .landmark { filter:saturate(.45); opacity:.8; }
+#worlds .world .topic { min-height:0; margin-bottom:18px; }
+#worlds .world.recommended { background:var(--orange-soft); }
+.recommended .n { animation:location-pulse 2s ease-out 3; }
+.world-flag { position:absolute; top:101px; right:23px; font-size:36px; color:#356444; }
+.cleared { border-color:#8bb18d; }
+.bonus-trail { position:relative; border:2px dashed #d8c7b9; border-radius:24px; padding:26px; background:var(--yellow-soft); }
+.bonus-trail h3,.bonus-trail>p { text-align:center; }
+.bonus-trail>p { font-size:13px; margin-bottom:24px; }
+.bonus-worlds { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+.boss-destination { position:relative; padding:44px 0 28px; max-width:490px; margin:0 auto; }
+.boss-destination::before { content:''; position:absolute; height:36px; top:0; left:50%; border-left:4px dashed #d8c7b9; }
+.boss-destination>.kicker { text-align:center; margin:0 0 12px; color:var(--ink-soft); }
+.boss-destination .world { border-color:var(--ink); }
+.boss-destination .landmark { height:175px; }
+#worlds .testcard { margin-top:10px; display:block; padding-left:80px; border-top:2px solid var(--ink); }
+#worlds .testcard .n { top:20px; }
+.map-celebration { margin-bottom:22px; border:1px solid var(--ink); border-radius:16px; padding:17px 22px; background:var(--green-soft); color:var(--ink); font-weight:700; animation:celebrate-in .6s ease-out; }
+.map-celebration>span { display:inline-block; font-size:25px; margin-right:8px; animation:star-turn .8s ease-out; }
+@keyframes location-pulse { 50% { box-shadow:0 0 0 9px #ee6c3430; } }
+@keyframes celebrate-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes star-turn { from { transform:rotate(-100deg) scale(.5); } to { transform:rotate(0) scale(1); } }
+@media(hover:hover) { #worlds .world.open { transition:transform .18s,box-shadow .18s; } #worlds .world.open:hover { transform:translateY(-3px); box-shadow:0 7px 0 var(--ink); } }
+@media(max-width:600px) {
+ .core-trail { padding-left:30px; }.core-trail::before { left:12px; top:70px; }
+ .trail-stop,.trail-stop:nth-child(even) { width:100%; margin:0 0 24px; padding:0 0 0 16px; }
+ .trail-stop::before,.trail-stop:nth-child(even)::before { width:34px; left:-18px; right:auto; }
+ .trail-marker,.trail-stop:nth-child(even) .trail-marker { left:-35px; right:auto; }
+ .landmark { height:135px; }
+ .bonus-trail { padding:20px 16px; }.bonus-worlds { grid-template-columns:1fr; gap:20px; }
+ #worlds .testcard { padding-left:20px; padding-top:74px; }
+}
+
+#worlds .world .pill.done { background:var(--green); }
+#worlds .world .pill.part { background:var(--yellow); }
+/* Shared flow: original typography, clearer grouping and feedback. */
+.topbar { flex-wrap:wrap; }
+.toplinks { flex-wrap:wrap; }
+.tlink[aria-current="page"] { background:var(--yellow-soft); border-color:var(--ink); }
+.entry-guide { list-style:none; padding:0; margin:26px 0 0; display:grid; gap:12px; }
+.entry-guide li { display:flex; align-items:center; gap:12px; font-size:14px; color:var(--ink-soft); }
+.entry-guide b { display:grid; place-items:center; flex:0 0 28px; height:28px; border:1.5px solid var(--ink); border-radius:9px; background:var(--yellow-soft); color:var(--ink); }
+#screen-progress { max-width:940px; margin:auto; }
+.rank-track { margin:22px 0; padding:16px 20px; border:1px solid var(--line); border-radius:14px; background:var(--card); font-size:13px; }
+.rank-track progress,.progress-detail progress { width:100%; height:10px; appearance:none; border:0; border-radius:99px; overflow:hidden; background:var(--line); margin:12px 0 4px; }
+.rank-track progress::-webkit-progress-bar,.progress-detail progress::-webkit-progress-bar { background:var(--line); }
+.rank-track progress::-webkit-progress-value,.progress-detail progress::-webkit-progress-value { background:var(--orange); border-radius:99px; }
+.rank-track progress::-moz-progress-bar,.progress-detail progress::-moz-progress-bar { background:var(--orange); }
+.sync-card { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; background:var(--blue-soft); border:2px solid var(--ink); border-radius:20px; padding:24px; }
+.sync-card h2 { font-size:23px; }.sync-card p { margin:0 0 5px; font-size:14px; }.sync-card small { color:var(--ink-soft); }
+#submit-msg { flex-basis:100%; font-size:14px; }#submit-msg:empty { display:none; }
+.progress-world { border:1px solid var(--line); border-radius:16px; background:white; margin:0 0 12px; overflow:hidden; }
+.progress-world summary { cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:10px; padding:20px; }
+.progress-world summary::after { content:'+'; font-size:24px; }.progress-world[open] summary::after { content:'−'; }
+.progress-world summary>span:first-child { flex:1; }.progress-world summary b { font-family:'Fraunces',serif; font-size:18px; }
+.progress-world small,.progress-level small { display:block; font-size:12px; color:var(--ink-soft); margin-top:4px; }
+.progress-detail { border-top:1px solid var(--line); padding:0 20px 14px; }
+.progress-level { display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid var(--line); font-size:14px; }
+.progress-level:last-child { border-bottom:0; }.progress-level>b { font-size:12px; white-space:nowrap; }
+.class-board { margin:28px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:20px 0; }
+.class-board summary { cursor:pointer; font-family:'Fraunces',serif; font-size:21px; font-weight:700; }.class-board[open] summary { margin-bottom:18px; }
+.bdg small { display:block; margin-top:9px; color:var(--ink-soft); font-size:11px; }.bdg.off { opacity:.72; }
+.mission { padding:20px; border:1px solid var(--line); border-radius:16px; background:var(--card); }
+.say:not(:empty) { background:var(--yellow-soft); border-radius:10px; padding:10px 13px; margin-top:10px; }.say.warn { background:var(--terra-soft); }
+#p-ask>.note,#c-ask { margin:0 0 12px; }#p-ask>p { margin:0 2px 10px !important; }
+.controls .btn { min-height:44px; }.test-map { margin-bottom:18px; }
+#screen-discover .opts { margin-top:22px; }.xp-reward { animation:celebrate-in .35s ease-out; }
+section[id^="screen-"]:not(.hidden) { animation:screen-enter .22s ease-out; }
+@keyframes screen-enter { from { opacity:.5; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:600px) {
+ .topbar { align-items:flex-start; }.toplinks { justify-content:flex-end; max-width:70%; gap:6px; }
+ .progress-world summary { padding:16px; }.progress-world summary b { font-size:16px; }.progress-detail { padding:0 14px 12px; }
+ .progress-level { grid-template-columns:1fr auto; gap:8px; }.progress-level>span { grid-column:1/-1; }.progress-level .btn { justify-self:end; }
+ .sync-card { padding:18px; }.sync-card>.btn { width:100%; }.mission { padding:16px; }.mission h2 { font-size:24px; }
+ .lvl-meta { flex-wrap:wrap; }.lvl-meta>span:not(.clock) { flex:1; min-width:120px; }.lvl-meta .clock { font-size:12px; }
+ .readout { align-items:flex-start; }.readout .trail { overflow-wrap:anywhere; }.readout .total { font-size:25px; }
+}
+
+/* Phone top bar: logo + language on one row, the three navigation links as an
+   even row underneath (instead of four buttons squeezed beside the logo). */
+@media(max-width:600px) {
+ .topbar { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); align-items:center; gap:8px; }
+ .toplinks { display:contents; }
+ .brand { grid-column:1 / 3; grid-row:1; }
+ #btn-lang { grid-column:3; grid-row:1; justify-self:end; }
+ #nav-map { grid-column:1; grid-row:2; }
+ #nav-progress { grid-column:2; grid-row:2; }
+ #lnk-tool { grid-column:3; grid-row:2; }
+ #nav-map, #nav-progress, #lnk-tool { width:100%; justify-content:center; text-align:center; display:inline-flex; align-items:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:6px 4px; letter-spacing:.02em; }
+}
+@media(max-width:360px) {
+ #nav-map, #nav-progress, #lnk-tool { font-size:9px; letter-spacing:0; padding:6px 2px; }
+}
+
+/* ---- Tests at the top of the map, and the player guide ---- */
+.test-banner { display:grid; grid-template-columns:1fr auto; gap:14px 24px; align-items:center; margin:0 0 16px;
+  background:var(--green-soft); border:2px solid var(--ink); border-radius:20px; box-shadow:0 4px 0 var(--ink); padding:22px 26px; }
+.test-banner.post { background:var(--blue-soft); }
+.test-banner .kicker { color:#3f7a1f; font-size:10px; margin-bottom:4px; }
+.test-banner.post .kicker { color:#316cc1; }
+.test-banner h2 { margin:0 0 6px; font-size:24px; }
+.test-banner p { margin:0; }
+.guide-lede { font-size:16.5px; max-width:70ch; }
+.guide-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:18px; }
+.guide-card { display:grid; grid-template-columns:auto 1fr; gap:12px; background:var(--card); border:2px solid var(--ink); border-radius:18px; padding:18px 20px; box-shadow:0 3px 0 var(--ink); }
+.guide-card h3 { margin:3px 0 8px; font-size:18px; }
+.guide-card ul { margin:0; padding-left:18px; color:var(--ink-soft); font-size:14.5px; }
+.guide-card li { margin-bottom:6px; }
+.guide-card li b { color:var(--ink); }
+.guide-card:nth-child(6n+1) .qn { background:var(--yellow); } .guide-card:nth-child(6n+2) .qn { background:var(--blue); transform:rotate(2deg); }
+.guide-card:nth-child(6n+3) .qn { background:var(--green); } .guide-card:nth-child(6n+4) .qn { background:var(--terra); transform:rotate(3deg); }
+.guide-card:nth-child(6n+5) .qn { background:var(--orange); } .guide-card:nth-child(6n) .qn { background:var(--blue); }
+@media(max-width:700px) { .guide-grid { grid-template-columns:1fr; } }
+@media(max-width:600px) {
+ .test-banner { grid-template-columns:1fr; padding:18px; } .test-banner .btn { width:100%; }
+ #nav-help { grid-column:3; grid-row:1; justify-self:start; font-size:0; width:38px; padding:0; justify-content:center; display:inline-flex; align-items:center; }
+ #nav-help::before { content:"?"; font-size:15px; font-weight:800; }
+ #entry-help-wrap, #btn-entry-help { margin:10px 0 0 !important; width:100%; }
+}
+
+/* ---- Quest path on How to play ---- */
+.guide-h2 { margin:30px 0 10px; font-size:24px; }
+.guide-h2 small { font:600 14px "DM Sans",sans-serif; color:var(--ink-faint); margin-left:6px; }
+.guide-tools { gap:10px; margin:0 0 14px; flex-wrap:wrap; }
+.quest-path { list-style:none; margin:0; padding:0; position:relative; display:grid; gap:14px; }
+.quest-path::before { content:""; position:absolute; left:23px; top:24px; bottom:24px; border-left:3px dashed var(--ink-faint); }
+.qp-stop { position:relative; display:grid; grid-template-columns:48px 1fr; gap:14px; align-items:start; }
+.qp-dot { position:relative; z-index:1; width:48px; height:48px; border-radius:50%; border:2.5px solid var(--ink); background:var(--card); display:grid; place-items:center; font-size:22px; box-shadow:0 3px 0 var(--ink); transition:transform .3s; }
+.qp-stop.done .qp-dot { background:var(--green); font-weight:800; font-size:20px; }
+.qp-stop.here .qp-dot { background:var(--yellow); animation:qp-bob 1.6s ease-in-out infinite; }
+.qp-body { background:var(--card); border:2px solid var(--ink); border-radius:18px; padding:14px 18px; box-shadow:0 3px 0 var(--ink); transition:transform .3s, box-shadow .3s, background .3s; }
+.qp-body h3 { margin:2px 0 6px; }
+.qp-body p { margin:0; font-size:14.5px; }
+.qp-step { font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); }
+.qp-step b { color:var(--orange); }
+.qp-stop.here .qp-body { border-color:var(--orange); box-shadow:0 3px 0 var(--orange); }
+.qp-stop.done .qp-body { background:var(--green-soft); }
+.qp-stop.lit .qp-body { transform:translateY(-3px); background:var(--yellow-soft); box-shadow:0 6px 0 var(--ink); }
+.qp-stop.lit .qp-dot { transform:scale(1.18) rotate(-6deg); }
+.qp-worlds { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.qp-world { display:inline-flex; align-items:center; gap:6px; padding:5px 11px; border-radius:999px; border:1.5px solid var(--ink); background:color-mix(in srgb, var(--world-color, var(--yellow)) 22%, var(--card)); font-size:13px; }
+.qp-world i { font-style:normal; }
+.qp-world small { color:var(--ink-faint); font-weight:700; }
+.qp-world.bonus { border-style:dashed; }
+.qp-world.boss { background:var(--ink); color:var(--card); }
+@keyframes qp-bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-5px); } }
+.badge-gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.bg-item { display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:start; border:1.5px solid var(--line); border-radius:14px; padding:12px; background:var(--card); }
+.bg-item b { display:block; font-size:14px; line-height:1.25; }
+.bg-item small { display:block; font-size:12.5px; color:var(--ink-soft); line-height:1.35; margin-top:3px; }
+.bg-item em { display:inline-block; margin-top:5px; font-style:normal; font-size:11.5px; font-weight:700; color:var(--ink); background:var(--yellow); border-radius:6px; padding:1px 7px; }
+.bg-icon { font-size:26px; filter:grayscale(1); opacity:.55; }
+.bg-item.got { border:2px solid var(--ink); box-shadow:0 3px 0 var(--ink); }
+.bg-item.got .bg-icon { filter:none; opacity:1; }
+@media(max-width:700px) { .badge-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); } .qp-body { padding:12px 14px; } }
+@media(max-width:380px) { .badge-gallery { grid-template-columns:1fr; } }
+
+/* ---- Reminders to submit results ---- */
+.test-banner.submit { background:var(--orange-soft); }
+.test-banner.submit .kicker { color:#b4481a; }
+.submit-note { display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-top:14px; padding:12px 14px; border:2px dashed var(--orange); border-radius:14px; background:var(--orange-soft); }
+.submit-note p { margin:0; flex:1 1 220px; color:var(--ink); font-size:14.5px; }
+.post-warn { margin:16px 0 0; padding:14px 16px; border:2px solid var(--ink); border-radius:14px; background:var(--yellow-soft); color:var(--ink-soft); font-size:15px; }
+.post-warn b { color:var(--ink); }
+
+/* Headings get focus on each new screen so screen readers announce it;
+   that focus doesn't need a visible box. */
+[tabindex="-1"]:focus { outline:none; }
+
+/* ---- Phone layout ---- */
+@media(max-width:600px) {
+ /* Top bar: logo + ? + sound + language on one row, the three links under it. */
+ .topbar { grid-template-columns:repeat(6,minmax(0,1fr)); gap:6px; margin-bottom:14px; padding-bottom:12px; }
+ .brand { grid-column:1 / 4; }
+ #nav-help, #btn-sound, #btn-lang { grid-row:1; width:40px; min-height:40px; padding:0; justify-self:end; display:inline-flex; align-items:center; justify-content:center; }
+ #nav-help { grid-column:4; } #btn-sound { grid-column:5; font-size:16px; } #btn-lang { grid-column:6; }
+ #nav-map { grid-column:1 / 3; } #nav-progress { grid-column:3 / 5; } #lnk-tool { grid-column:5 / 7; }
+ #nav-map, #nav-progress, #lnk-tool { min-height:36px; }
+
+ /* Level screens: tighter story card, and a map that fits above the dock. */
+ .lvl-head { margin-bottom:10px; padding-bottom:10px; }
+ .lvl-meta { margin-bottom:8px; }
+ .lvl-meta .btn { min-height:38px; padding:6px 12px; }
+ .lvl-head .step { min-height:34px; padding:4px 2px; }
+ .mission { padding:12px 14px; margin-bottom:10px; }
+ .mission h2 { font-size:21px; margin-bottom:6px; }
+ .mission p { font-size:14.5px; line-height:1.5; }
+ .board svg { max-height:max(340px, calc(100svh - 220px)); }
+
+ /* The dock: running total, feedback and buttons stay in reach at the
+    bottom of the screen while the map is in view. */
+ .dock { position:sticky; bottom:0; z-index:6; margin:12px -16px 0; padding:8px 16px calc(10px + env(safe-area-inset-bottom));
+   background:color-mix(in srgb, var(--bg) 94%, transparent); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+   border-top:1.5px solid var(--line); box-shadow:0 -8px 18px -12px rgba(23,19,12,.35); }
+ .dock .readout { margin:0 0 4px; gap:10px; }
+ .dock .readout .trail { font-size:13px; }
+ .dock .readout .total { font-size:22px; }
+ .dock .say { margin:0 0 8px; min-height:0; font-size:13.5px; }
+ .dock .say:not(:empty) { margin-top:0; padding:8px 11px; }
+ .dock .controls { gap:6px; flex-wrap:wrap; }
+ .dock .controls .btn { min-height:44px; flex:1 1 0; min-width:0; padding:8px 6px; font-size:13.5px; white-space:nowrap; }
+ .dock .controls .btn:not(.ghost) { flex-basis:100%; order:2; font-size:15px; }
+ .dock .controls .grow { display:none; }
+ #screen-case .dock { padding-top:8px; }
+ #screen-case .dock .controls .btn { flex:0 0 auto; padding:8px 16px; }
+
+ /* World 2: the question sits above the map, so read → tap needs no scrolling. */
+ #screen-case:not(.hidden) { display:flex; flex-direction:column; }
+ #screen-case > .lvl-head { order:1; } #screen-case > .mission { order:2; } #c-ask { order:3; margin:0 0 10px; }
+ #screen-case > .board { order:4; } #screen-case > .dock { order:5; } #c-aid { order:6; } #c-panel { order:7; }
+}
